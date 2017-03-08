@@ -16,6 +16,7 @@ import java.util.List;
  * Created by lcl on 2017/3/5.
  */
 public class GoodDaoImp implements GoodDao{
+
     @Override
     public void addGood(Good good) {
         Document document=null;
@@ -74,6 +75,23 @@ public class GoodDaoImp implements GoodDao{
         good.setGoodNum(Integer.parseInt(element.elementText("goodNum")));
         good.setGoodPrice(Double.parseDouble(element.elementText("goodPrice")));
         return good;
+    }
+
+    @Override
+    public List<Good> findByName(String name) {
+        List<Good> goodList=new ArrayList<Good>();
+        Document document=XmlRead.readGoodXml();
+        List<Element> elementList=(List<Element>)document.selectNodes("//good[goodName='"+name+"']");
+        for (Element element:elementList
+             ) {
+            Good good=new Good();
+            good.setGoodId(element.attributeValue("goodId"));
+            good.setGoodName(element.elementText("goodName"));
+            good.setGoodNum(Integer.parseInt(element.elementText("goodNum")));
+            good.setGoodPrice(Double.parseDouble(element.elementText("goodPrice")));
+            goodList.add(good);
+        }
+        return goodList;
     }
 
     @Override
