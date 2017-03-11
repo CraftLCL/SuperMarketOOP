@@ -5,10 +5,14 @@ import java.util.Scanner;
 /**
  * Created by lcl on 2017/3/5.
  */
-public class MainMenu {
+public class MainMenu extends BaseView{
     public static String [] margs;
     public static void main(String[] args) {
         margs=args;
+        new MainMenu().run();
+    }
+
+    public   void run() {
         System.out.println("*********************************************************");
         System.out.println("                     1.商品维护");
         System.out.println("                     2.前台收银");
@@ -31,9 +35,11 @@ public class MainMenu {
                         break;
                     case 1:
                         System.out.println("执行商品维护界面\n\n");
+                        new GoodsControl().run();
                         break;
                     case 2:
                         System.out.println("执行前台收银界面\n\n");
+                        new CheckStand().run();
                         break;
                     case 3:
                         System.out.println("执行商品管理界面\n\n");
@@ -49,7 +55,5 @@ public class MainMenu {
             }
 
         }while (m);
-
-
     }
 }

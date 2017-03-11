@@ -24,4 +24,16 @@ public class XmlWrite {
         }
 
     }
+    public static void writeManagerXml(Document document){
+        try {
+            FileOutputStream fileOutputStream=new FileOutputStream("manager.xml");
+            OutputFormat outputFormat =new OutputFormat();
+            outputFormat.setEncoding("utf-8");
+            XMLWriter xmlWrite=new XMLWriter(fileOutputStream,outputFormat);
+            xmlWrite.write(document);
+            xmlWrite.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

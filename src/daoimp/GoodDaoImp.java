@@ -35,6 +35,7 @@ public class GoodDaoImp implements GoodDao{
          elementGood.addElement("goodName").setText(good.getGoodName());
          elementGood.addElement("goodPrice").setText(String.valueOf(good.getGoodPrice()));
          elementGood.addElement("goodNum").setText(String.valueOf(good.getGoodNum()));
+         elementGood.addElement("goodSale").setText(String.valueOf(good.getGoodSale()+0));
 
          XmlWrite.writeGoodXml(document);
 
@@ -61,7 +62,7 @@ public class GoodDaoImp implements GoodDao{
         element.element("goodName").setText(good.getGoodName());
         element.element("goodPrice").setText(String.valueOf(good.getGoodPrice()));
         element.element("goodNum").setText(String.valueOf(good.getGoodNum()));
-
+        element.element("goodSale").setText(String.valueOf(good.getGoodSale()));
         XmlWrite.writeGoodXml(document);
     }
 
@@ -74,6 +75,7 @@ public class GoodDaoImp implements GoodDao{
         good.setGoodName(element.elementText("goodName"));
         good.setGoodNum(Integer.parseInt(element.elementText("goodNum")));
         good.setGoodPrice(Double.parseDouble(element.elementText("goodPrice")));
+        good.setGoodSale(Integer.parseInt(element.elementText("goodSale")));
         return good;
     }
 
@@ -81,7 +83,8 @@ public class GoodDaoImp implements GoodDao{
     public List<Good> findByName(String name) {
         List<Good> goodList=new ArrayList<Good>();
         Document document=XmlRead.readGoodXml();
-        List<Element> elementList=(List<Element>)document.selectNodes("//good[goodName='"+name+"']");
+        //List<Element> elementList=(List<Element>)document.selectNodes("//good[goodName='"+name+"']");
+        List<Element> elementList=(List<Element>)document.selectNodes("//good[contains(goodName,'"+name+"')]");
         for (Element element:elementList
              ) {
             Good good=new Good();
@@ -89,6 +92,7 @@ public class GoodDaoImp implements GoodDao{
             good.setGoodName(element.elementText("goodName"));
             good.setGoodNum(Integer.parseInt(element.elementText("goodNum")));
             good.setGoodPrice(Double.parseDouble(element.elementText("goodPrice")));
+            good.setGoodSale(Integer.parseInt(element.elementText("goodSale")));
             goodList.add(good);
         }
         return goodList;
@@ -111,4 +115,23 @@ public class GoodDaoImp implements GoodDao{
 
         return goodList;
     }
+
+    @Override
+    public List<Good> showAllSaleGoods() {
+        Document document=XmlRead.readGoodXml();
+        List<Good> goodList=new ArrayList<>();
+        List<Element> list=(List<Element>)document.selectNodes("//good[goodSale>0]");
+        for (Element element:list
+                ) {
+            Good good=new Good();
+            good.setGoodId(element.attributeValue("goodId"));
+            good.setGoodName(element.elementText("goodName"));
+            good.setGoodPrice(Double.parseDouble(element.elementText("goodPrice")) );
+            good.setGoodNum(Integer.parseInt(element.elementText("goodNum")) );
+            good.setGoodSale(Integer.parseInt(element.elementText("goodSale")));
+            goodList.add(good);
+        }
+        return goodList;
+    }
+
 }

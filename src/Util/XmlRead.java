@@ -22,4 +22,16 @@ public class XmlRead {
         }
         return document;
     }
+    public static Document readManagerXml(){
+        SAXReader saxReader=new SAXReader();
+        Document document=null;
+        try {
+            document=saxReader.read(new File("manager.xml"));
+
+        } catch (DocumentException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+        return document;
+    }
 }

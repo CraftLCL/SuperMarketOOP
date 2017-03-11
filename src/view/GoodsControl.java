@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Created by lcl on 2017/3/5.
  */
-public class GoodsControl {
+public class GoodsControl extends BaseView {
     @Test
     public  void run(){
         System.out.println("               商超购物管理系统    商品维护\n");
@@ -33,22 +33,27 @@ public class GoodsControl {
                 switch (i){
                     case 0:
                         System.out.println("返回主菜单\n");
-                        System.exit(0);
+                        new MainMenu().run();
                         break;
                     case 1:
                         System.out.println("执行添加商品界面\n\n");
+                        new AddGoodView().run();
                         break;
                     case 2:
                         System.out.println("执行更改商品界面\n\n");
+                        new UpdateGoodView().run();
                         break;
                     case 3:
                         System.out.println("执行删除商品界面\n\n");
+                        new DeleteGoodView().run();
                         break;
                     case 4:
                         System.out.println("执行显示所有商品界面\n\n");
+                        new FindAllGoodView().run();
                         break;
                     case 5:
                         System.out.println("执行查询商品界面\n\n");
+                        new FindGoodView().run();
                         break;
                     default:
                         System.out.println("输入错误请重新输入\n\n");

@@ -11,4 +11,5 @@ public interface GoodDao {
      Good findById(String id);
      List<Good> findByName(String name);
      List<Good> findAll();
+     List<Good> showAllSaleGoods();
 }

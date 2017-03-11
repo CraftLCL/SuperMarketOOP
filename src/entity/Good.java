@@ -11,6 +11,12 @@ public class Good {
 
 
 
+    private int goodSale;
+
+
+
+    public Good() {
+    }
 
 
     public String getGoodId() {
@@ -43,6 +49,14 @@ public class Good {
 
     public void setGoodNum(int goodNum) {
         this.goodNum = goodNum;
+    }
+
+    public int getGoodSale() {
+        return goodSale;
+    }
+
+    public void setGoodSale(int goodSale) {
+        this.goodSale = goodSale;
     }
 
 }
