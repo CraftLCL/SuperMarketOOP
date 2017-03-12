@@ -2,12 +2,15 @@ package dao;
 
 import entity.Manager;
 
+import java.util.List;
+
 /**
  * Created by lcl on 2017/3/11.
  */
 public interface ManagerDao {
-    void addManager();
+    void addManager(Manager manager);
     void deleteManager(String userName);
     void updateManger(Manager manager);
-    void findByUserName(String userName);
+    Manager findByUserName(String userName);
+    List<Manager> findAllManagers();
 }

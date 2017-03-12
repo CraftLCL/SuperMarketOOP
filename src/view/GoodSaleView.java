@@ -5,12 +5,13 @@ import daoimp.GoodDaoImp;
 import entity.Good;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by lcl on 2017/3/11.
  */
 public class GoodSaleView extends BaseView{
-
+    Scanner scanner=new Scanner(System.in);
     @Override
     public void run() {
         GoodDao goodDao=new GoodDaoImp();
@@ -31,5 +32,8 @@ public class GoodSaleView extends BaseView{
             System.out.println(out);
             i++;
         }
+        System.out.println("按下任意键后按回车返回上级界面");
+        scanner.next();
+        new GoodManage().run();
     }
 }

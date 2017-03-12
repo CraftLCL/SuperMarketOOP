@@ -13,6 +13,7 @@ public class MainMenu extends BaseView{
     }
 
     public   void run() {
+        new LoginView().run();
         System.out.println("*********************************************************");
         System.out.println("                     1.商品维护");
         System.out.println("                     2.前台收银");
@@ -43,6 +44,7 @@ public class MainMenu extends BaseView{
                         break;
                     case 3:
                         System.out.println("执行商品管理界面\n\n");
+                        new GoodManage().run();
                         break;
                     default:
                         System.out.println("输入错误请重新输入\n\n");

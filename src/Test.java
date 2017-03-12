@@ -23,7 +23,14 @@ public class Test {
         //new DeleteGoodView().run();
         //new UpdateGoodView().run();
         //new CheckStand().run();
-        new GoodManage().run();
+        //new GoodManage().run();
+
+
+
+
+        //new AddManagerView().run();
+        //new DeleteManagerView().run();
+new FindAllManagersView().run();
 
 
 
